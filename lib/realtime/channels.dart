@@ -87,6 +87,22 @@ abstract class _ClientChannelsMixin implements _DdpClientWrapper {
     return completer.future;
   }
 
+
+  /**
+   * When a user makes a room as a favorite, the yellow star appears and it moves the room up to the "favorites" section of the list of rooms.
+   * String - the id of the room to leave
+   * Boolean - whether the room is a favorite or not, defaults to true
+   */
+  Future<void> toggleFavorite(String roomId, {bool value = true}) {
+    Completer<void> completer = Completer();
+    this
+        ._getDdpClient()
+        .call('toggleFavorite', [roomId, value])
+        .then((value) => completer.complete(null))
+        .catchError((error) => completer.completeError(error));
+    return completer.future;
+  }
+
   Future<void> archiveChannel(String roomId) {
     Completer<void> completer = Completer();
     this
