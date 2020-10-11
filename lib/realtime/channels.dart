@@ -1,4 +1,4 @@
-part of realtime;
+part of realtelementime;
 
 abstract class _ClientChannelsMixin implements _DdpClientWrapper {
   Future<String> createDirectMessage(String username) {
@@ -82,6 +82,19 @@ abstract class _ClientChannelsMixin implements _DdpClientWrapper {
     this
         ._getDdpClient()
         .call('joinRoom', [roomId])
+        .then((value) => completer.complete(null))
+        .catchError((error) => completer.completeError(error));
+    return completer.future;
+  }
+
+  /**
+   * Hides a room/channel
+   */
+  Future<void> hideChannel(String roomId) {
+    Completer<void> completer = Completer();
+    this
+        ._getDdpClient()
+        .call('hideRoom', [roomId])
         .then((value) => completer.complete(null))
         .catchError((error) => completer.completeError(error));
     return completer.future;
