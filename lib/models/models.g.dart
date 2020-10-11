@@ -147,12 +147,10 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
     ..postMessage = json['postMessage'] == null
         ? null
         : PostMessage.fromJson(json['postMessage'] as Map<String, dynamic>)
-    ..reactions = (json['reactions'] as Map<String, dynamic>)?.map((k, e) =>
-        MapEntry(
-            k,
-            e == null
-                ? null
-                : ReactionItem.fromJson(e as Map<String, dynamic>)));
+    ..reactions = (json['reactions'] as Map<String, dynamic>)?.map(
+      (k, e) => MapEntry(k,
+          e == null ? null : ReactionItem.fromJson(e as Map<String, dynamic>)),
+    );
 }
 
 Map<String, dynamic> _$MessageToJson(Message instance) {

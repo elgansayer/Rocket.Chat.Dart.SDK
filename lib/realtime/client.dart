@@ -2,7 +2,6 @@ library realtime;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 import 'package:ddp/ddp.dart' as ddp;
@@ -71,6 +70,6 @@ class Client extends Object
       this._getDdpClient().addStatusListener(listener);
 }
 
-final Random _random = Random(DateTime.now().millisecondsSinceEpoch);
+// final Random _random = Random(DateTime.now().millisecondsSinceEpoch);
 
-String _randomId() => '${_random.nextDouble()}';
+// String _randomId() => '${_random.nextDouble()}';

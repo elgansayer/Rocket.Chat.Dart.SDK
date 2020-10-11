@@ -1,4 +1,4 @@
-part of realtelementime;
+part of realtime;
 
 abstract class _ClientChannelsMixin implements _DdpClientWrapper {
   Future<String> createDirectMessage(String username) {
